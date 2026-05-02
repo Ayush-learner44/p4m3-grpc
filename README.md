@@ -22,6 +22,8 @@ Controller receives digest messages pushed over the gRPC stream from the switch.
 - **Attack** → push drop rule to `dangerous_table` on all switches, block permanently
 - **Benign** → allow, do nothing
 
+Models are trained on the **CICDDoS2019 dataset (SYN.csv)**. The primary feature used is packets-per-second (PPS), scaled by 5000x to match the simulation speed to the training distribution.
+
 ---
 
 ## Why Pure gRPC
@@ -97,7 +99,7 @@ sudo python3 network.py
 ```
 Wait until the Mininet CLI appears (`mininet>`). The P4 compiler runs automatically and generates `p4src/ddos_detector_p4rt.txt` and `p4src/ddos_detector.json`.
 
-### Step 3 — Start the controller
+### Step 2 — Start the controller
 Open a second terminal:
 ```bash
 cd /home/ayush/p4m3_pure_grpc
@@ -109,14 +111,31 @@ The controller will:
 - Enable digest on leaf1 and leaf3
 - Start blocking on the gRPC stream (no CPU port sniffing)
 
-### Step 4 — Run traffic
-Back in the Mininet CLI:
+### Step 3 — Run traffic
+
+**Option A — Run everything at once** (all attackers + all benign hosts simultaneously):
 ```
 mininet> py exec(open('/home/ayush/p4m3_pure_grpc/run_all.py').read())
 ```
-This launches attack and benign scripts on all hosts simultaneously.
 
-### Step 5 — Monitor h2 (optional)
+**Option B — Run individual hosts via xterm** (opens a separate terminal window per host):
+```
+mininet> xterm h1a h1b h1c h3a h3b h3c
+```
+This opens one terminal window per host. Inside each window run the script directly:
+```bash
+# inside h1a xterm:
+python3 /home/ayush/p4m3_pure_grpc/attack1.py
+
+# inside h1b xterm:
+python3 /home/ayush/p4m3_pure_grpc/attack2.py
+
+# inside h3a xterm:
+python3 /home/ayush/p4m3_pure_grpc/good1.py
+```
+Open only the hosts you need — e.g. `xterm h1a` alone to test just one attacker, or `xterm h3a h3b h3c` to test only benign traffic.
+
+### Step 4 — Monitor h2 (optional)
 ```
 mininet> h2 python3 /home/ayush/p4m3_pure_grpc/monitor.py &
 ```
