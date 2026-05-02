@@ -2,6 +2,8 @@
 
 P4-based SYN flood detection system running on a virtual leaf-spine network using BMv2 (`simple_switch_grpc`) and P4Runtime gRPC. The controller receives packet features directly over the bidirectional gRPC stream — no CPU port sniffing, no virtual interface binding.
 
+Built on top of **[p4-utils](https://github.com/nsg-ethz/p4-utils)** by ETH Zurich — a framework that extends Mininet for P4 programmable switches.
+
 ---
 
 ## How It Works
@@ -81,11 +83,16 @@ p4m3_pure_grpc/
 
 ## Prerequisites
 
-- Ubuntu (WSL or native)
-- [p4-utils](https://github.com/nsg-ethz/p4-utils) installed at `/home/ayush/p4-tools/p4-utils`
-- Mininet
-- `simple_switch_grpc` (BMv2 with P4Runtime support)
-- Python packages: `scapy`, `numpy`, `psutil`, `sklearn`, `xgboost`
+- **Ubuntu 22.04 on WSL2** (tested environment — native Ubuntu works too)
+- **p4-utils** by ETH Zurich — [https://github.com/nsg-ethz/p4-utils](https://github.com/nsg-ethz/p4-utils) — follow their installation guide, includes Mininet and `simple_switch_grpc`
+- **xterm** — for opening per-host terminal windows in Mininet:
+  ```bash
+  sudo apt install xterm
+  ```
+- **Python packages:**
+  ```bash
+  pip install scapy numpy psutil scikit-learn xgboost
+  ```
 
 ---
 
