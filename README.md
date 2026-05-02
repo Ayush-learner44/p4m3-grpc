@@ -111,7 +111,18 @@ The controller will:
 - Enable digest on leaf1 and leaf3
 - Start blocking on the gRPC stream (no CPU port sniffing)
 
-### Step 3 — Run traffic
+### Step 3 — Start the monitor on h2
+Open an xterm for h2 so you can see incoming SYN packets and CPU usage before traffic starts:
+```
+mininet> xterm h2
+```
+Inside the h2 xterm:
+```bash
+python3 monitor.py
+```
+Leave this running — it shows live SYN count and CPU usage at the victim.
+
+### Step 4 — Run traffic
 
 **Option A — Run everything at once** (all attackers + all benign hosts simultaneously):
 ```
@@ -132,12 +143,6 @@ python3 good2.py     # h3b
 python3 good3.py     # h3c
 ```
 Open only the hosts you need — e.g. `xterm h1a` alone to test just one attacker, or `xterm h3a h3b h3c` to test only benign traffic.
-
-### Step 4 — Monitor h2 (optional)
-```
-mininet> h2 python3 /home/ayush/p4m3_pure_grpc/monitor.py &
-```
-Shows live SYN count and CPU usage at the victim host.
 
 ---
 
