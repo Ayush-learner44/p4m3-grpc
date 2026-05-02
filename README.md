@@ -75,8 +75,6 @@ p4m3_pure_grpc/
         └── scaler.pkl
 ```
 
-> **Note:** `ml/` is not in this repo. Copy your trained models folder here before running.
-
 ---
 
 ## Prerequisites
@@ -91,12 +89,7 @@ p4m3_pure_grpc/
 
 ## How to Run
 
-### Step 1 — Copy ML models
-```bash
-cp -r /path/to/your/ml/models /home/ayush/p4m3_pure_grpc/ml/models
-```
-
-### Step 2 — Start the network
+### Step 1 — Start the network
 Open a terminal in WSL:
 ```bash
 cd /home/ayush/p4m3_pure_grpc
