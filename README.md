@@ -122,16 +122,14 @@ mininet> py exec(open('/home/ayush/p4m3_pure_grpc/run_all.py').read())
 ```
 mininet> xterm h1a h1b h1c h3a h3b h3c
 ```
-This opens one terminal window per host. Inside each window run the script directly:
+This opens one terminal window per host. Inside each xterm, just run:
 ```bash
-# inside h1a xterm:
-python3 /home/ayush/p4m3_pure_grpc/attack1.py
-
-# inside h1b xterm:
-python3 /home/ayush/p4m3_pure_grpc/attack2.py
-
-# inside h3a xterm:
-python3 /home/ayush/p4m3_pure_grpc/good1.py
+python3 attack1.py   # h1a
+python3 attack2.py   # h1b
+python3 attack3.py   # h1c
+python3 good1.py     # h3a
+python3 good2.py     # h3b
+python3 good3.py     # h3c
 ```
 Open only the hosts you need — e.g. `xterm h1a` alone to test just one attacker, or `xterm h3a h3b h3c` to test only benign traffic.
 
