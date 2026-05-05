@@ -1,7 +1,7 @@
-# 0 "/home/ayush/p4m3_pure_grpc/p4src/ddos_detector.p4"
+# 0 "/home/ayush/p4m3-grpc/p4src/ddos_detector.p4"
 # 0 "<built-in>"
 # 0 "<command-line>"
-# 1 "/home/ayush/p4m3_pure_grpc/p4src/ddos_detector.p4"
+# 1 "/home/ayush/p4m3-grpc/p4src/ddos_detector.p4"
 /* ============================================================
    P4M3: SYN Flood Detection — Pure gRPC Implementation
    Three-layer detection: dangerous_table → CMS → ML controller
@@ -109,7 +109,7 @@ extern bool static_assert(bool check, string message);
 
 /// Like the above but using a default message.
 extern bool static_assert(bool check);
-# 15 "/home/ayush/p4m3_pure_grpc/p4src/ddos_detector.p4" 2
+# 15 "/home/ayush/p4m3-grpc/p4src/ddos_detector.p4" 2
 # 1 "/usr/local/share/p4c/p4include/v1model.p4" 1
 /*
 Copyright 2013-present Barefoot Networks, Inc.
@@ -895,7 +895,7 @@ package V1Switch<H, M>(Parser<H, M> p,
                        ComputeChecksum<H, M> ck,
                        Deparser<H> dep
                        );
-# 16 "/home/ayush/p4m3_pure_grpc/p4src/ddos_detector.p4" 2
+# 16 "/home/ayush/p4m3-grpc/p4src/ddos_detector.p4" 2
 
 /* CMS: 2 hash functions (crc16 + crc32), 1024 columns each */
 

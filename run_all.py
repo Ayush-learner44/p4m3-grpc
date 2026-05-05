@@ -1,10 +1,10 @@
 """
 Run from mininet CLI:
-    mininet> py exec(open('/home/ayush/p4m3_pure_grpc/run_all.py').read())
+    mininet> py exec(open('/home/ayush/p4m3-grpc/run_all.py').read())
 """
 import time
 
-BASE = '/home/ayush/p4m3_pure_grpc'
+BASE = '/home/ayush/p4m3-grpc'
 
 hosts_scripts = [
     ('h1a', 'attack1.py'),
@@ -20,4 +20,4 @@ for host, script in hosts_scripts:
     print(f'[run_all] {host} -> {script}')
 
 print('[run_all] All launched simultaneously.')
-print('[run_all] Logs: mininet> h1a cat /tmp/p4m3_h1a.log  (same for h1b, h1c, h3a, h3b, h3c)')
+print('[run_all] Logs: mininet> py net.get("h1a").cmd("cat /tmp/p4m3_h1a.log")')

